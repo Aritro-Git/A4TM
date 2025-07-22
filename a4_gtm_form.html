@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Funnel Insights | GA4 + GTM Simulation</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header, section, footer { padding: 20px; }
+        header { background-color: #004080; color: white; }
+        .btn { background-color: #007BFF; color: white; padding: 10px 20px; text-decoration: none; border: none; cursor: pointer; }
+        .form-container { margin-top: 30px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Smart Funnel Insights</h1>
+        <p>Simulate your customer journey with GA4 and GTM</p>
+    </header>
+
+    <section id="landing-section">
+        <h2>Download Our Free eBook</h2>
+        <p>"Top 10 Strategies for Marketing Automation"</p>
+        <button id="downloadBtn" class="btn">Download Now</button>
+    </section>
+
+    <section id="form-section" class="hidden">
+        <h2>Submit Your Info</h2>
+        <form id="leadForm">
+            <label>Name:<br><input type="text" name="name" required></label><br><br>
+            <label>Email:<br><input type="email" name="email" required></label><br><br>
+            <label>Upload Resume (optional):<br><input type="file" id="resumeUpload"></label><br><br>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </section>
+
+    <section id="thankyou-section" class="hidden">
+        <h2>Thank You!</h2>
+        <p>Your download is ready. Check your email.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Smart Funnel Insights Project</p>
+    </footer>
+
+    <script>
+        // GTM-friendly interaction events
+        document.getElementById("downloadBtn").addEventListener("click", function() {
+            dataLayer.push({ event: "cta_click", label: "Download Now" });
+            document.getElementById("landing-section").classList.add("hidden");
+            document.getElementById("form-section").classList.remove("hidden");
+        });
+
+        document.getElementById("resumeUpload").addEventListener("change", function() {
+            dataLayer.push({ event: "file_upload", fileName: this.files[0].name });
+        });
+
+        document.getElementById("leadForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            dataLayer.push({ event: "form_submit" });
+            document.getElementById("form-section").classList.add("hidden");
+            document.getElementById("thankyou-section").classList.remove("hidden");
+        });
+
+        // Scroll tracking (simplified)
+        window.addEventListener("scroll", function() {
+            if (window.scrollY > 200) {
+                dataLayer.push({ event: "scroll_depth", depth: "200px" });
+            }
+        });
+    </script>
+
+    <script>
+        // Simulated GTM dataLayer
+        window.dataLayer = window.dataLayer || [];
+    </script>
+</body>
+</html>
