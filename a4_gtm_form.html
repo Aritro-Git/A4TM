@@ -1,79 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Funnel Insights | GA4 + GTM Simulation</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        header, section, footer { padding: 20px; }
-        header { background-color: #004080; color: white; }
-        .btn { background-color: #007BFF; color: white; padding: 10px 20px; text-decoration: none; border: none; cursor: pointer; }
-        .form-container { margin-top: 30px; }
-        .hidden { display: none; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revenue Optimization Toolkit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #f8f9fa, #eef2f3);
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #1d3557, #457b9d);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      margin: 0 0 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin: 0;
+    }
+    section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      color: #1d3557;
+    }
+    p {
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+    .btn {
+      background: #ff6b6b;
+      color: white;
+      padding: 12px 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: #fa5252;
+    }
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    label {
+      display: block;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="email"], input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    footer {
+      background-color: #f1f1f1;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Smart Funnel Insights</h1>
-        <p>Simulate your customer journey with GA4 and GTM</p>
-    </header>
+  <header>
+    <h1>Revenue Optimization Toolkit</h1>
+    <p>Understand, Engage, and Convert More Customers</p>
+  </header>
 
-    <section id="landing-section">
-        <h2>Download Our Free eBook</h2>
-        <p>"Top 10 Strategies for Marketing Automation"</p>
-        <button id="downloadBtn" class="btn">Download Now</button>
-    </section>
+  <section id="landing-section">
+    <h2>Download Our Free eBook</h2>
+    <p>"Top 10 Strategies for Marketing Automation and Funnel Optimization"</p>
+    <button id="downloadBtn" class="btn">Download Now</button>
+  </section>
 
-    <section id="form-section" class="hidden">
-        <h2>Submit Your Info</h2>
-        <form id="leadForm">
-            <label>Name:<br><input type="text" name="name" required></label><br><br>
-            <label>Email:<br><input type="email" name="email" required></label><br><br>
-            <label>Upload Resume (optional):<br><input type="file" id="resumeUpload"></label><br><br>
-            <button type="submit" class="btn">Submit</button>
-        </form>
-    </section>
+  <section id="form-section" class="hidden">
+    <h2>Get Your Free Copy</h2>
+    <form id="leadForm">
+      <label>Name:
+        <input type="text" name="name" required />
+      </label>
+      <label>Email:
+        <input type="email" name="email" required />
+      </label>
+      <label>Upload Resume (optional):
+        <input type="file" id="resumeUpload" />
+      </label>
+      <br><br>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </section>
 
-    <section id="thankyou-section" class="hidden">
-        <h2>Thank You!</h2>
-        <p>Your download is ready. Check your email.</p>
-    </section>
+  <section id="thankyou-section" class="hidden">
+    <h2>Thank You!</h2>
+    <p>Your download is ready. Please check your email for the eBook.</p>
+  </section>
 
-    <footer>
-        <p>&copy; 2025 Smart Funnel Insights Project</p>
-    </footer>
+  <footer>
+    <p>&copy; 2025 Revenue Optimization Toolkit</p>
+  </footer>
 
-    <script>
-        // GTM-friendly interaction events
-        document.getElementById("downloadBtn").addEventListener("click", function() {
-            dataLayer.push({ event: "cta_click", label: "Download Now" });
-            document.getElementById("landing-section").classList.add("hidden");
-            document.getElementById("form-section").classList.remove("hidden");
-        });
+  <script>
+    document.getElementById("downloadBtn").addEventListener("click", function() {
+      dataLayer.push({ event: "cta_click", label: "Download Now" });
+      document.getElementById("landing-section").classList.add("hidden");
+      document.getElementById("form-section").classList.remove("hidden");
+    });
 
-        document.getElementById("resumeUpload").addEventListener("change", function() {
-            dataLayer.push({ event: "file_upload", fileName: this.files[0].name });
-        });
+    document.getElementById("resumeUpload").addEventListener("change", function() {
+      dataLayer.push({ event: "file_upload", fileName: this.files[0].name });
+    });
 
-        document.getElementById("leadForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-            dataLayer.push({ event: "form_submit" });
-            document.getElementById("form-section").classList.add("hidden");
-            document.getElementById("thankyou-section").classList.remove("hidden");
-        });
+    document.getElementById("leadForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      dataLayer.push({ event: "form_submit" });
+      document.getElementById("form-section").classList.add("hidden");
+      document.getElementById("thankyou-section").classList.remove("hidden");
+    });
 
-        // Scroll tracking (simplified)
-        window.addEventListener("scroll", function() {
-            if (window.scrollY > 200) {
-                dataLayer.push({ event: "scroll_depth", depth: "200px" });
-            }
-        });
-    </script>
+    window.addEventListener("scroll", function() {
+      if (window.scrollY > 200) {
+        dataLayer.push({ event: "scroll_depth", depth: "200px" });
+      }
+    });
+  </script>
 
-    <script>
-        // Simulated GTM dataLayer
-        window.dataLayer = window.dataLayer || [];
-    </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+  </script>
 </body>
 </html>
