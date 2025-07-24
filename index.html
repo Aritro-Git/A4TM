@@ -224,7 +224,7 @@
       dataLayer.push({ event: "form_submit" });
       document.getElementById("form-section").classList.add("hidden");
       document.getElementById("thankyou-section").classList.remove("hidden");
-      dataLayer.push({ event: "thank_you_view" }); //solid customer conversion
+      dataLayer.push({ event: "cta_thank_you_view" }); //solid customer conversion
     });
 
     window.addEventListener("scroll", function() {
